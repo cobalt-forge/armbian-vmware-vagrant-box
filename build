@@ -1,0 +1,3 @@
+#!/bin/sh
+
+packer build -var 'cloud_token=${VAGRANT_CLOUD_TOKEN}' -var 'version=0.1.1' .
