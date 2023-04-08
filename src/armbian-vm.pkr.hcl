@@ -26,6 +26,11 @@ source "vmware-vmx" "armbian-bullseye" {
 build {
   sources = ["sources.vmware-vmx.armbian-bullseye"]
 
+  provisioner "shell" {
+    inline = [
+      "echo 'vagrant ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/vagrant"
+    ]
+  }
   # post-processors {
   #   post-processor "vagrant" {
   #     output               = "${var.box_name}_{{.Provider}}.box"
