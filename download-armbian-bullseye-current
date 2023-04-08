@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ ! -f ./armbian-base-vm.vmwarevm/armbian-base-vm.vmdk ]
+then
+  [ -f ./armbian-bullseye-current.img.xz ] || { echo "Downloading Armbian Bullseye current..." && curl -L --progress-bar --output ./armbian-bullseye-current.img.xz https://redirect.armbian.com/uefi-x86/Bullseye_current; }
+  [ -f ./armbian-bullseye-current.img ] || { echo "Extracting downloaded file..." && xz -d ./armbian-bullseye-current.img.xz; }
+  echo "Converting raw disk image to Vmware disk image..."
+  qemu-img convert -f raw -O vmdk ./armbian-bullseye-current.img ./armbian-base-vm.vmwarevm/armbian-base-vm.vmdk
+  echo "Complete."
+else
+  echo "Armbian base VM disk image already exists. Nothign to do!"
+fi
+

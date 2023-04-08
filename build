@@ -1,3 +1,9 @@
 #!/bin/sh
 
-packer build -var "cloud_token=${VAGRANT_CLOUD_TOKEN}" -var "box_version=${VAGRANT_BOX_VERSION}" src
+if [ ! -f ./armbian-base-vm.vmwarevm/armbian-base-vm.vmdk ]
+then
+  echo "Armbian base VM disk image is missing. Please run the relevant download script to download it!"
+  exit 1
+fi
+
+packer build -var "cloud_token=${VAGRANT_CLOUD_TOKEN}" -var-file "./src/armbian-versions/bullseye.pkrvars.hcl" src

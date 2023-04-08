@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Foundry>
+<VM>
+<VMId type="string">52 c0 fa ac 82 cd 6b 1d-65 e2 b0 c4 3e 7c ff 96</VMId>
+<ClientMetaData>
+<clientMetaDataAttributes/>
+<HistoryEventList/></ClientMetaData>
+<vmxPathName type="string">armbian-base-vm.vmx</vmxPathName></VM></Foundry>
